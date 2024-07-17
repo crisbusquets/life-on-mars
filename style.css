@@ -1,0 +1,54 @@
+/*
+ Theme Name: Life on Mars
+ Theme URI: http://example.com/life-on-mars
+ Description: A child theme of the Assembler theme
+ Author: Your Name
+ Author URI: http://example.com
+ Template: assembler-wpcom
+ Version: 1.0.0
+ */
+
+/* Import the parent theme's stylesheet */
+@import url("../assembler-wpcom/style.css");
+
+/* Add your custom styles here */
+input,
+.wp-block-post-comments-form textarea,
+label {
+  font-family: var(--wp--preset--font-family--default);
+  font-size: var(--wp--preset--font-size--normal);
+}
+
+.is-data {
+  color: var(--wp--preset--color--base-600);
+  font-family: var(--wp--preset--font-family--meta);
+  font-size: var(--wp--preset--font-size--span);
+  text-transform: uppercase;
+}
+
+.wp-block-post-terms__suffix {
+  color: var(--wp--preset--color--base-600);
+  display: inline-block;
+  margin-inline: var(--wp--preset--spacing--10);
+}
+
+.wp-element-button {
+  border-radius: 6px;
+}
+.wp-block-group-is-layout-flex {
+  gap: 0;
+}
+
+@media only screen and (max-width: 430px) {
+  .is-data {
+    order: 1;
+  }
+  .is-role {
+    order: 2;
+  }
+  .row-wrap {
+    align-items: baseline !important;
+    flex-direction: column !important;
+    gap: var(--wp--preset--spacing--10) !important;
+  }
+}
