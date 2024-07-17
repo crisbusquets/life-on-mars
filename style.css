@@ -39,6 +39,18 @@ label {
   gap: 0;
 }
 
+/* Jetpack Social */
+
+.sd-like {
+  /* Add more spacing to Jetpack likes */
+  margin-top: var(--wp--preset--spacing--40);
+}
+
+.sd-title {
+  /* Hide the "Like this" label from Jetpack Social. */
+  display: none !important;
+}
+
 @media only screen and (max-width: 430px) {
   .is-data {
     order: 1;

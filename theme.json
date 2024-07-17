@@ -33,6 +33,11 @@
         }
       ]
     },
+    "custom": {
+      "typography": {
+        "scale": 1.25
+      }
+    },
     "layout": {
       "contentSize": "608px",
       "wideSize": "816px"
