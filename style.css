@@ -26,6 +26,10 @@ label {
   text-transform: uppercase;
 }
 
+.is-post-meta {
+  gap: 0;
+}
+
 .wp-block-post-terms__suffix {
   color: var(--wp--preset--color--base-600);
   display: inline-block;
@@ -43,12 +47,16 @@ label {
 
 .sd-like {
   /* Add more spacing to Jetpack likes */
-  margin-top: var(--wp--preset--spacing--40);
+  margin-block-start: var(--wp--preset--spacing--40);
 }
 
 .sd-title {
   /* Hide the "Like this" label from Jetpack Social. */
   display: none !important;
+}
+
+.wp-block-post-comments-form .comment-reply-title {
+  margin-top: var(--wp--preset--spacing--20);
 }
 
 @media only screen and (max-width: 430px) {
