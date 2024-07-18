@@ -21,13 +21,13 @@ label {
 
 .is-data {
   color: var(--wp--preset--color--base-600);
-  font-family: var(--wp--preset--font-family--meta);
+  font-family: var(--wp--preset--font-family--meta) !important;
   font-size: var(--wp--preset--font-size--span);
   text-transform: uppercase;
 }
 
 .is-post-meta {
-  gap: 0;
+  gap: 0 !important;
 }
 
 .wp-block-post-terms__suffix {
