@@ -12,6 +12,9 @@
 @import url("../assembler/style.css");
 
 /* Add your custom styles here */
+h1 {
+  margin-bottom: var(--wp--preset--spacing--30);
+}
 input,
 .wp-block-post-comments-form textarea,
 label {

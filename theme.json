@@ -195,11 +195,6 @@
         }
       },
       "h1": {
-        "spacing": {
-          "margin": {
-            "bottom": "var(--wp--preset--spacing--30)"
-          }
-        },
         "typography": {
           "fontSize": "var(--wp--preset--font-size--heading-1)",
           "fontWeight": "200",
