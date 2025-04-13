@@ -1,0 +1,101 @@
+/**
+ * Final Optimized Theme Toggle
+ * - Shows sun icon in dark mode (to switch to light)
+ * - Shows moon icon in light mode (to switch to dark)
+ * - Smooth transitions
+ */
+
+/* Container styling - simple button approach */
+.theme-toggle-container {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* The toggle button */
+.theme-toggle-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-specific styling */
+[data-theme="light"] .theme-toggle-button {
+  color: #222222;
+}
+
+[data-theme="dark"] .theme-toggle-button {
+  color: #e6e6e6;
+}
+
+/* Hover effects */
+.theme-toggle-button:hover {
+  background-color: rgba(128, 128, 128, 0.12);
+}
+
+/* Icon container - holds both icons */
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Individual icons */
+.theme-toggle-icon-sun,
+.theme-toggle-icon-moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Control which icon shows based on theme */
+[data-theme="light"] .theme-toggle-icon-sun {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+[data-theme="light"] .theme-toggle-icon-moon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+[data-theme="dark"] .theme-toggle-icon-sun {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+[data-theme="dark"] .theme-toggle-icon-moon {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* SVG styling */
+.theme-toggle-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+}
+
+/* Focus styles for accessibility */
+.theme-toggle-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

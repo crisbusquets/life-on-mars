@@ -1,0 +1,31 @@
+/**
+ * Simplified Flexoki Dark Mode implementation
+ * Maps dark colors to existing WordPress CSS variables
+ */
+
+[data-theme="dark"] {
+  /* Map WordPress CSS variables to Flexoki dark values */
+  --wp--preset--color--black: #fffcf0;
+  --wp--preset--color--paper: #100f0f;
+  --wp--preset--color--base-100: #1c1b1a;
+  --wp--preset--color--base-200: #282726;
+  --wp--preset--color--base-300: #403e3c;
+  --wp--preset--color--base-500: #878580;
+  --wp--preset--color--base-600: #6f6e69;
+  --wp--preset--color--base-700: #575653;
+  --wp--preset--color--base-800: #403e3c;
+  --wp--preset--color--base-900: #282726;
+  --wp--preset--color--red-400: #e67f73;
+  --wp--preset--color--orange-400: #e89e5c;
+  --wp--preset--color--yellow-400: #e0c14f;
+  --wp--preset--color--green-400: #b1c16a;
+  --wp--preset--color--cyan-400: #6ec8c2;
+  --wp--preset--color--blue-400: #6ca7d2;
+  --wp--preset--color--purple-400: #b0a7db;
+  --wp--preset--color--magenta-400: #e39cba;
+}
+
+/* Dark mode image adjustment */
+[data-theme="dark"] img:not([src*=".svg"]) {
+  filter: brightness(0.95) contrast(1.05);
+}

@@ -12,9 +12,39 @@
           "slug": "black"
         },
         {
+          "name": "Base 900",
+          "color": "#282726",
+          "slug": "base-900"
+        },
+        {
+          "name": "Base 800",
+          "color": "#403E3C",
+          "slug": "base-800"
+        },
+        {
+          "name": "Base 700",
+          "color": "#575653",
+          "slug": "base-700"
+        },
+        {
           "name": "Base 600",
           "color": "#6F6E69",
           "slug": "base-600"
+        },
+        {
+          "name": "Base 500",
+          "color": "#878580",
+          "slug": "base-500"
+        },
+        {
+          "name": "Base 300",
+          "color": "#B7B5AC",
+          "slug": "base-300"
+        },
+        {
+          "name": "Base 200",
+          "color": "#D0CEC7",
+          "slug": "base-200"
         },
         {
           "name": "Base 100",
@@ -30,9 +60,45 @@
           "name": "Red 400",
           "color": "#D14D41",
           "slug": "red-400"
+        },
+        {
+          "name": "Orange 400",
+          "color": "#DA702C",
+          "slug": "orange-400"
+        },
+        {
+          "name": "Yellow 400",
+          "color": "#D0A215",
+          "slug": "yellow-400"
+        },
+        {
+          "name": "Green 400",
+          "color": "#879A39",
+          "slug": "green-400"
+        },
+        {
+          "name": "Cyan 400",
+          "color": "#3AA99F",
+          "slug": "cyan-400"
+        },
+        {
+          "name": "Blue 400",
+          "color": "#4385BE",
+          "slug": "blue-400"
+        },
+        {
+          "name": "Purple 400",
+          "color": "#8B7EC8",
+          "slug": "purple-400"
+        },
+        {
+          "name": "Magenta 400",
+          "color": "#CE5D97",
+          "slug": "magenta-400"
         }
       ]
     },
+    "appearanceTools": true,
     "custom": {
       "typography": {
         "scale": 1.25
@@ -427,7 +493,6 @@
           "fontSize": "var(--wp--preset--font-size--heading-1)"
         }
       },
-
       "core/paragraph": {
         "spacing": {
           "margin": {
@@ -452,7 +517,6 @@
           }
         }
       },
-
       "core/post-comments-form": {
         "elements": {
           "textarea": {
