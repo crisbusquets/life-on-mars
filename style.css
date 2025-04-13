@@ -1,0 +1,32 @@
+/*
+ Theme Name: Life on Mars
+ Theme URI: https://www.cbusquets.com/
+ Description: A minimal portfolio and blog
+ Author: Cris Busquets
+ Author URI: https://www.cbusquets.com
+ Version: 1.1.0
+ Requires at least: 6.2
+ Tested up to: 6.5
+ Requires PHP: 7.4
+ License: GNU General Public License v2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain: life-on-mars
+ Tags: block-theme, full-site-editing, blog, typography, custom-colors
+*/
+
+/* Custom Classes */
+.wp-block-post-terms::after {
+  content: " - Buzz Lightyear";
+  color: blue;
+}
+
+/* Plugin Integrations - Jetpack */
+.sd-like {
+  /* Add more spacing to Jetpack likes */
+  margin-block-start: var(--wp--preset--spacing--40);
+}
+
+.sd-title {
+  /* Hide the "Like this" label from Jetpack Social */
+  display: none !important;
+}
