@@ -1,0 +1,171 @@
+/**
+ * Theme Transitions
+ * Handles smooth animations between light and dark modes
+ * 
+ * @package Life_on_Mars
+ * @since 1.2.0
+ */
+
+/* ==========================================================================
+   Smooth Theme Transitions
+   ========================================================================== */
+
+/**
+ * Universal color transitions
+ * Applies to all elements for consistent theme switching
+ */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Transition Exclusions
+   ========================================================================== */
+
+/**
+ * Elements that should NOT transition
+ * Prevents unwanted animations on interactive elements
+ */
+.theme-toggle-button,
+.theme-toggle-button *,
+input[type="range"],
+input[type="color"],
+video,
+iframe,
+canvas,
+embed,
+object,
+svg,
+.no-transition,
+.wp-block-image img,
+.wp-block-gallery img,
+[data-no-transition] {
+  transition: none !important;
+}
+
+/* ==========================================================================
+   Image Handling
+   ========================================================================== */
+
+/**
+ * Smooth image adjustments for dark mode
+ * Only affects non-SVG images
+ */
+img:not([src*=".svg"]) {
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] img:not([src*=".svg"]) {
+  filter: brightness(0.95) contrast(1.05);
+}
+
+[data-theme="light"] img:not([src*=".svg"]) {
+  filter: none;
+}
+
+/* ==========================================================================
+   WordPress Block Specific Transitions
+   ========================================================================== */
+
+/**
+ * Enhanced transitions for WordPress blocks
+ */
+.wp-block-group,
+.wp-block-columns,
+.wp-block-column,
+.wp-block-cover,
+.wp-block-media-text,
+.wp-block-quote {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   CSS Custom Properties Transitions
+   ========================================================================== */
+
+/**
+ * Smooth transitions for CSS custom properties
+ * Ensures color variables change smoothly
+ */
+:root {
+  transition-property: --wp--preset--color--black, --wp--preset--color--paper, --wp--preset--color--base-100,
+    --wp--preset--color--base-200, --wp--preset--color--base-300, --wp--preset--color--base-500,
+    --wp--preset--color--base-600, --wp--preset--color--base-700, --wp--preset--color--base-800,
+    --wp--preset--color--base-900;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Accessibility & Performance
+   ========================================================================== */
+
+/**
+ * Respect user's motion preferences
+ * Disables all transitions for users who prefer reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  :root {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/**
+ * High contrast mode adjustments
+ */
+@media (prefers-contrast: high) {
+  * {
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* ==========================================================================
+   Optional Enhancements
+   ========================================================================== */
+
+/**
+ * Subtle page fade during theme transition (optional)
+ * Uncomment if you want a subtle fade effect
+ */
+/*
+html {
+  transition: opacity 0.2s ease;
+}
+
+html.theme-changing {
+  opacity: 0.98;
+}
+*/
+
+/**
+ * Focus indicator transitions
+ */
+:focus-visible {
+  transition: outline-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/**
+ * Link hover transitions
+ */
+a {
+  transition: color 0.2s ease;
+}
+
+/**
+ * Button transitions
+ */
+button,
+.wp-element-button,
+.wp-block-button__link {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}

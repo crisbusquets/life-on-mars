@@ -1,17 +1,10 @@
-/**
- * Final Optimized Theme Toggle
- * - Shows sun icon in dark mode (to switch to light)
- * - Shows moon icon in light mode (to switch to dark)
- * - Smooth transitions
- */
-
-/* Container styling - simple button approach */
+/* Container styling - maintains your existing approach */
 .theme-toggle-container {
   margin-left: auto;
   margin-right: 0;
 }
 
-/* The toggle button */
+/* Enhanced toggle button with better accessibility */
 .theme-toggle-button {
   width: 34px;
   height: 34px;
@@ -25,10 +18,17 @@
   position: relative;
   overflow: hidden;
   background-color: transparent;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s ease, box-shadow 0.2s ease;
+
+  /* Better touch targets for mobile */
+  min-height: 44px;
+  min-width: 44px;
+
+  /* Ensure proper z-index for focus outlines */
+  z-index: 1;
 }
 
-/* Theme-specific styling */
+/* Theme-specific styling with enhanced contrast */
 [data-theme="light"] .theme-toggle-button {
   color: #222222;
 }
@@ -37,12 +37,51 @@
   color: #e6e6e6;
 }
 
-/* Hover effects */
+/* Enhanced hover and focus states */
 .theme-toggle-button:hover {
   background-color: rgba(128, 128, 128, 0.12);
+  transform: scale(1.05);
 }
 
-/* Icon container - holds both icons */
+.theme-toggle-button:active {
+  transform: scale(0.95);
+}
+
+/* Comprehensive focus styles for accessibility */
+.theme-toggle-button:focus {
+  outline: none; /* We'll handle this with custom styles */
+}
+
+.theme-toggle-button:focus-visible,
+.theme-toggle-button[data-focused="true"] {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle-button:focus-visible,
+[data-theme="dark"] .theme-toggle-button[data-focused="true"] {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .theme-toggle-button:focus-visible,
+  .theme-toggle-button[data-focused="true"] {
+    outline-width: 3px;
+    outline-color: Highlight;
+  }
+
+  .theme-toggle-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  [data-theme="dark"] .theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Icon container - maintains your existing structure */
 .theme-toggle-icon {
   display: flex;
   align-items: center;
@@ -52,7 +91,7 @@
   position: relative;
 }
 
-/* Individual icons */
+/* Enhanced individual icons with better transitions */
 .theme-toggle-icon-sun,
 .theme-toggle-icon-moon {
   position: absolute;
@@ -63,10 +102,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
+
+  /* Better rendering */
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
-/* Control which icon shows based on theme */
+/* Control which icon shows based on theme - maintains your existing logic */
 [data-theme="light"] .theme-toggle-icon-sun {
   transform: translateY(100%);
   opacity: 0;
@@ -87,15 +130,137 @@
   opacity: 0;
 }
 
-/* SVG styling */
+/* Enhanced SVG styling */
 .theme-toggle-icon svg {
   width: 20px;
   height: 20px;
   stroke-width: 2px;
+  transition: transform 0.2s ease;
+
+  /* Better rendering for icons */
+  shape-rendering: geometricPrecision;
 }
 
-/* Focus styles for accessibility */
-.theme-toggle-button:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+/* Icon hover effects */
+.theme-toggle-button:hover .theme-toggle-icon svg {
+  transform: scale(1.1);
+}
+
+/* Pressed state visual feedback */
+.theme-toggle-button[aria-pressed="true"] .theme-toggle-icon svg {
+  filter: brightness(1.1);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-button,
+  .theme-toggle-icon-sun,
+  .theme-toggle-icon-moon,
+  .theme-toggle-icon svg {
+    transition: none !important;
+  }
+
+  /* Still allow opacity changes for immediate feedback */
+  .theme-toggle-icon-sun,
+  .theme-toggle-icon-moon {
+    transition: opacity 0.1s ease !important;
+  }
+}
+
+/* Loading state (if you want to add a loading spinner) */
+.theme-toggle-button[data-loading="true"] {
+  pointer-events: none;
+}
+
+.theme-toggle-button[data-loading="true"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: theme-toggle-spin 0.8s linear infinite;
+}
+
+@keyframes theme-toggle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state styling */
+.theme-toggle-button[data-error="true"] {
+  color: #e53e3e;
+  background-color: rgba(229, 62, 62, 0.1);
+}
+
+/* Success animation */
+.theme-toggle-button[data-success="true"] {
+  animation: theme-toggle-success 0.6s ease;
+}
+
+@keyframes theme-toggle-success {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Custom properties for easy theming */
+:root {
+  --theme-toggle-size: 34px;
+  --theme-toggle-icon-size: 20px;
+  --theme-toggle-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --theme-toggle-focus-color: currentColor;
+  --theme-toggle-hover-bg: rgba(128, 128, 128, 0.12);
+}
+
+/* Dark mode custom properties */
+[data-theme="dark"] {
+  --theme-toggle-hover-bg: rgba(255, 255, 255, 0.12);
+}
+
+/* Alternative size variants (if needed) */
+.theme-toggle-button--small {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.theme-toggle-button--large {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.theme-toggle-button--small .theme-toggle-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle-button--large .theme-toggle-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Screen reader only class for announcements */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
